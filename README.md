@@ -23,4 +23,5 @@ Optional prerequisites (not needed if using the dev container)
 - `01_GettingStarted.ipynb`
   - A gentle start using Ollama to host a local LLM instance and a small amount of .net code to perform a simple request response to the LLM.
   - We start by installing the NuGet packages, downloading the appropraite models, and finish by learning the answer to life, the universe, and everything.
-
+- `02_ChatHistory.ipynb`
+  - Learn about the `ChatHistory` class and how the LLM understands the back and forth nature of your interactions.
