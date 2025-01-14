@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+  "name": "C# (.NET)",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+  "customizations": {
+    "codespaces": {
+        "openFiles": [
+            "README.md"
+        ]
+    },
+    // install some vscode extensions
+    "vscode": {
+        "extensions": [
+            "ms-dotnettools.dotnet-interactive-vscode",
+            "ms-dotnettools.vscodeintellicode-csharp",
+            "ms-dotnettools.csharp"
+        ]
+    }
+  }
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {
+  //   "ghcr.io/prulloac/devcontainer-features/ollama:1": {
+  //     "pull": "llama3.2,nomic-embed-text"
+  //   }
+  // }
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [5000, 5001],
+  // "portsAttributes": {
+  //    "5001": {
+  //      "protocol": "https"
+  //    }
+  // }
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": [""],
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
