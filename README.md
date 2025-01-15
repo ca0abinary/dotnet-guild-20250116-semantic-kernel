@@ -28,3 +28,6 @@ Optional prerequisites (not needed if using the dev container)
 - `03_FunctionCalling.ipynb`
   - Learn how to have the model automatically call custom functions!
   - ⚠ Currently this functionality is only available in the C# project due to issues with Polyglot Notebooks.
+- `04_VectorSearch.ipynb`
+  - We will dig into the fundamentals of creating a vector store
+  - See how information can be retrieved using natural language limited to a very exact data set
