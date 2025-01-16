@@ -13,6 +13,7 @@ Based on [Microsoft Learn Documentation](https://learn.microsoft.com/en-us/seman
 - [Visual Studio Code](https://code.visualstudio.com/)
 
 Optional prerequisites (not needed if using the dev container)
+
 - [.net SDK 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [Polyglot Notebooks Extension (VS Code)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode)
 
@@ -37,3 +38,16 @@ Optional prerequisites (not needed if using the dev container)
 - `05_FormattedOutput.ipynb`
   - Use the language model to generate Json formatted data
   - We will create a simple fantasy novel character generator with a consistent data schema
+
+## Ways to improve your life
+
+- Ask for an LLM to break down tasks for you
+- Use it to start an email
+- Get detailed explanations on things you don't fully understand
+- Ask for it to write some code
+- Have it evaluate your statements that might be inflammatory
+  - Have it fix those statements
+- Summarize "walls of text"
+- Create ideas
+- Have it review your ideas (it the ones it came up with)
+- Create better proposals
