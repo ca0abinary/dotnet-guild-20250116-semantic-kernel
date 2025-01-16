@@ -10,10 +10,10 @@ public static partial class Tutorial
   {
     ChatHistory chatHistory = [
         new () { Role = AuthorRole.System, Content = @"Answer any question put to you with a quote from one of the works of Douglas Adams." },
-            new () { Role = AuthorRole.User, Content = "What is the meaning of life the universe and everything? Include citation." },
-            new () { Role = AuthorRole.Assistant, Content = "Forty-two" },
-            new () { Role = AuthorRole.User, Content = "In what book and chapter can I find this quote?" },
-        ];
+        new () { Role = AuthorRole.User, Content = "What is the meaning of life the universe and everything? Include citation." },
+        new () { Role = AuthorRole.Assistant, Content = "Forty-two" },
+        new () { Role = AuthorRole.User, Content = "In what book and chapter can I find this quote?" },
+    ];
 
     var historyLength = chatHistory.Count;
     using IChatClient client = new OllamaChatClient(new Uri(Config.OllamaApiUrl), Config.LanguageModel);
