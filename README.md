@@ -31,3 +31,6 @@ Optional prerequisites (not needed if using the dev container)
 - `04_VectorSearch.ipynb`
   - We will dig into the fundamentals of creating a vector store
   - See how information can be retrieved using natural language limited to a very exact data set
+- `05_FormattedOutput.ipynb`
+  - Use the language model to generate Json formatted data
+  - We will create a simple fantasy novel character generator with a consistent data schema

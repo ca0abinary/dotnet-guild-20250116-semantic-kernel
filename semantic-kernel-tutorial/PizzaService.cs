@@ -12,10 +12,16 @@ public enum PizzaSize
 
 public class PizzaOrder
 {
-    public Guid OrderId { get; set; } = Guid.NewGuid();
+    [Description("The unique identifier for the order in GUID format.")]
+    public string OrderId { get; set; } = Guid.NewGuid().ToString();
+
+    [Description("The size of the pizza. Options are Small, Medium, and Large.")]
     public string Size { get; set; } = string.Empty;
+    [Description("A comma separated list of toppings on the pizza.")]
     public string Toppings { get; set; } = string.Empty;
+    [Description("The quantity of pizzas ordered.")]
     public int Quantity { get; set; } = 1;
+    [Description("Any special instructions for the order.")]
     public string SpecialInstructions { get; set; } = string.Empty;
 }
 
@@ -61,5 +67,5 @@ public class PizzaService : IPizzaService
     public async Task<List<PizzaOrder>> GetCartAsync() => await Task.FromResult(Orders);
 
     public async Task<PizzaOrder> OrderPizzaAsync(Guid orderId) =>
-    await Task.FromResult(Orders.Single(o => o.OrderId == orderId));
+    await Task.FromResult(Orders.Single(o => o.OrderId == orderId.ToString()));
 }
