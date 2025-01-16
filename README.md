@@ -4,6 +4,9 @@
 
 Based on [Microsoft Learn Documentation](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ca0abinary/dotnet-guild-20250116-semantic-kernel)
+> Note: Codespaces does not support GPU models, so notebooks and code will run slowly or not at all.
+
 ## Prerequisites
 
 - [Ollama](https://ollama.com/)
