@@ -1,7 +1,6 @@
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Connectors.InMemory;
 using Microsoft.SemanticKernel.Embeddings;
 using OllamaSharp;
 using SemanticKernelTutorial.Models;
@@ -19,21 +18,24 @@ public static partial class Tutorial
 
         var kernel = Kernel
             .CreateBuilder()
+            .AddInMemoryVectorStore()
+            .AddInMemoryVectorStoreRecordCollection<Guid, MarkdownArticle>("articles")
             .AddOllamaTextEmbeddingGeneration(ollamaEmbeddings)
             .AddOllamaChatCompletion(ollamaLlm)
             .Build();
 
         var collection = await BuildCollection(kernel, @"C:\src\Admin.wiki");
 
-        await PerformSearchAsync(kernel, collection, "How do I write a new advanced search in HuB?");
+        await PerformSearchAsync(kernel, "How do I write a new advanced search in HuB?");
     }
 
     static async Task<IVectorStoreRecordCollection<Guid, MarkdownArticle>> BuildCollection(Kernel kernel, string markdownCollectionPath)
     {
-        var vectorStore = new InMemoryVectorStore();
-
-        var collection = vectorStore.GetCollection<Guid, MarkdownArticle>("articles");
+        var collection = kernel.GetRequiredService<IVectorStoreRecordCollection<Guid, MarkdownArticle>>();
         await collection.CreateCollectionIfNotExistsAsync();
+
+        System.Diagnostics.Stopwatch sw = new();
+        sw.Start();
 
         var markdownFiles = Directory.GetFiles(markdownCollectionPath, "*.md", SearchOption.AllDirectories);
         var tasks = markdownFiles.Select(md => Task.Run(async () =>
@@ -45,11 +47,15 @@ public static partial class Tutorial
 
         await Task.WhenAll(tasks);
 
+        sw.Stop();
+        Console.WriteLine($"Generated collection from {markdownCollectionPath} in {sw.Elapsed}");
+
         return collection;
     }
 
-    static async Task PerformSearchAsync(Kernel kernel, IVectorStoreRecordCollection<Guid, MarkdownArticle> collection, string searchString)
+    static async Task PerformSearchAsync(Kernel kernel, string searchString)
     {
+        var collection = kernel.GetRequiredService<IVectorStoreRecordCollection<Guid, MarkdownArticle>>();
         var searchVector = await kernel.GetRequiredService<ITextEmbeddingGenerationService>().GenerateEmbeddingAsync(searchString);
         var searchResult = await collection.VectorizedSearchAsync(searchVector, new() { Top = 1 });
         var resultRecords = await searchResult.Results.ToListAsync();
